@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box
+}
+body{
+    margin: 0;
+    padding: 0
+}
+main{
+    width: 100vw;
+    min-height: 100vh;
+}
+header{
+    display: flex;
+}
+header li{
+    list-style: none;
+}
