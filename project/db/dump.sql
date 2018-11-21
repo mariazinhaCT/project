@@ -34,8 +34,8 @@ INSERT INTO post (titulo,texto,id_categoria,autor) VALUES
 ('Post3','SW IX vai flopar',3,'Eu 2019'),
 ('Post4','KJKJKJKJ GRAZADO',4,'Didi'),
 ('Post5','Peppa Pig é top',5,'Maria'),
-('Post6','Fazer esse bolo hmmm',6,'Ana'),
+('Post6','Fazer um risoto',6,'Didek'),
 ('Post7','te amo',7,'Eu'),
-('Post8','Cade meu pão',6,'Andressa'),
+('Post8','Cade meu pão',6,'Giovana'),
 ('Post9','Vou te comer',6,'Thairinck'),
 ('Post10','Comer uma pizza',6,'Nicolas');

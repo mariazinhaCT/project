@@ -17,6 +17,7 @@ async function getCategoria(){
         ul.appendChild(li)
     }
 }
+getLocation()
 getCategoria()
 
 async function getPost(id=null){
@@ -64,24 +65,41 @@ async function getPost(id=null){
 }
  getPost()
 
-// <ul class="collapsible">
-//   <li>
-//     <div class="collapsible-header">
-//       <i class="material-icons">filter_drama</i>
-//       First
-//     </div>
-//     <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-//   </li>
-//   <li>
-//     <div class="collapsible-header">
-//       <i class="material-icons">place</i>
-//       Second
-//     </div>
-//     <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-//   </li>
-// </ul>
-
-
     let elems = document.querySelectorAll('.collapsible');
     let instances = M.Collapsible.init(elems, {
         accordion: true });
+
+async function getForcast(lat, lon){
+    let req = await fetch("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&lang=pt&APPID=c144ba4eaa5f0aebc01c661169701dc7")
+    let resposta = await req.json()
+    console.log(resposta)
+        const li = document.createElement('li')
+        collection.insertBefore(li,collection.querySelector('li'))
+        const header = document.createElement('div')
+        header.classList = 'collapsible-header'
+        li.appendChild(header)
+        const span =  document.createElement('span')
+        span.classList = 'badge'
+        const icon = document.createElement('h5')
+        icon.classList = 'material-icons'
+        icon.innerText = 'filter_drama'
+        icon.innerText = 'Previsão do Tempo'
+        header.appendChild(icon)
+        const body = document.createElement('div')
+        body.classList = 'collapsible-body'
+        li.appendChild(body)
+        const p = document.createElement('p')
+        body.appendChild(p)
+        header.appendChild(span)
+        p.innerText += "Cidade: " + resposta.name + "\n" + "Temperatura mínima: " +  resposta.main.temp_min + "C°" + "\n" + "Temperatura Máxima: " + resposta.main.temp_max + "C°" 
+
+}   
+
+function getLocation(){
+    navigator.geolocation.getCurrentPosition(coordenadas =>{
+        console.log(coordenadas)
+        let latitude = coordenadas.coords.latitude;
+        let longitude = coordenadas.coords.longitude;
+        getForcast(latitude, longitude);
+    });
+}
